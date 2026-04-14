@@ -12,7 +12,7 @@ import (
 
 func main() {
 	// Database connection string for your remote PostgreSQL database
-	connStr := "postgres://username:password@remote-host:port/database?sslmode=disable"
+	connStr := "user=postgres password=Reaz@2776 dbname=postgres host=localhost port=5432 sslmode=disable"
 
 	// Open database connection
 	db, err := sql.Open("postgres", connStr)
@@ -73,7 +73,6 @@ func main() {
 	fmt.Println("SQL script execution completed.")
 }
 
-// Helper function to get min of two ints
 func min(a, b int) int {
 	if a < b {
 		return a
