@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
+	_ "github.com/lib/pq"
 	"mohammadreaz.com/moviedb/handlers"
 	"mohammadreaz.com/moviedb/logger"
 )
