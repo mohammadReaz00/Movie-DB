@@ -3,9 +3,22 @@ package main
 import (
 	"log"
 	"net/http"
+
+	"mohammadreaz.com/moviedb/logger"
 )
 
+func initializeLogger() *logger.Logger {
+	logInstance, err := logger.NewLogger("move.log")
+	if err != nil {
+		log.Fatalf("Failed to initialize logger %v", err)
+	}
+	defer logInstance.Close()
+	return logInstance
+}
+
 func main() {
+
+	logInstance := initializeLogger()
 
 	http.Handle("/", http.FileServer(http.Dir("public")))
 
@@ -13,5 +26,7 @@ func main() {
 	err := http.ListenAndServe(addr, nil)
 	if err != nil {
 		log.Fatalf("Server Failed: %v", err)
+		logInstance.Error("Server Failed", err)
 	}
+
 }
