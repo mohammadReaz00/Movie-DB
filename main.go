@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"mohammadreaz.com/moviedb/handlers"
 	"mohammadreaz.com/moviedb/logger"
 )
 
@@ -20,6 +21,11 @@ func main() {
 
 	logInstance := initializeLogger()
 
+	movieHandler := handlers.MovieHandler{}
+	// Set up routes
+	http.HandleFunc("/api/movies/top/", movieHandler.GetTopMovies)
+
+	//handler for static files
 	http.Handle("/", http.FileServer(http.Dir("public")))
 
 	const addr = ":8080"
