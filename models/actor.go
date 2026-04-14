@@ -1,8 +1,8 @@
 package models
 
 type Actor struct {
-	ID        int
-	FirstName string
-	LastName  string
-	ImageURL  *string //nullabel image may not be available for all actors
+	ID        int     `json:"id"`
+	FirstName string  `json:"first_name"`
+	LastName  string  `json:"last_name"`
+	ImageURL  *string `json:"image_url,omitempty"` // nullable image may not be available for all actors
 }
